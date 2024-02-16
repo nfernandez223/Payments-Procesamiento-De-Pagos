@@ -7,15 +7,18 @@ FROM mcr.microsoft.com/dotnet/runtime:6.0 AS base
 WORKDIR /app
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
-WORKDIR /src
-COPY ["WorkerProcesamientoDePagos.csproj", "."]
-RUN dotnet restore "./WorkerProcesamientoDePagos.csproj"
-COPY . .
-WORKDIR "/src/."
-RUN dotnet build "WorkerProcesamientoDePagos.csproj" -c Release -o /app/build
+WORKDIR /app/src/WorkerProcesamientoDePagos
+COPY src/WorkerProcesamientoDePagos/WorkerProcesamientoDePagos.csproj .
+RUN dotnet restore WorkerProcesamientoDePagos.csproj
+COPY src/Application ../Application
+COPY src/Domain ../Domain
+COPY src/InfraEstructure ../InfraEstructure
+COPY src/WorkerProcesamientoDePagos .
+WORKDIR /app/src/WorkerProcesamientoDePagos
+RUN dotnet build WorkerProcesamientoDePagos.csproj -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "WorkerProcesamientoDePagos.csproj" -c Release -o /app/publish /p:UseAppHost=false
+RUN dotnet publish WorkerProcesamientoDePagos.csproj -c Release -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
