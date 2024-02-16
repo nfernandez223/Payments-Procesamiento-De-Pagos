@@ -1,19 +1,33 @@
-Worker Procesamiento de Pagos
+# Worker Procesamiento de Pagos
 
-#Instalacion DockerFile en Docker Desktop
+Servicio utilizado para el procesamiento de pagos.
 
-1- Tener un ambiente de Docker instalado.
+## Instalación Dockerfile
 
-2- Verficar la existencia del archivo Dockerfile dentro del repositorio y su configuracion, siempre debe estar en la raiz del directorio.
+## Requisitos Previos
 
-3- Abrir una terminal en el directorio donde se encuentra el Dockerfile y ejecuta el siguiente comando para construir la imagen de Docker:
-docker build -t procesamientodepagos .
+Docker instalado en tu máquina.
+RabbitMQ instalado dentro de Docker.
+Sql Server instalado dentro de Docker.
+Verficar la existencia del archivo Dockerfile dentro del repositorio y su configuracion, siempre debe estar en la raiz del directorio.
 
-4- Una vez creada la imagen la podremos visualizar dentro del apartado de images en Docker y le damos a RUN.
+## Crear la imagen
+Para construir la imagen Docker, ejecuta el siguiente comando:
 
-5- Podemos definir como opcionales variables de entorno, si no lo definimos la imagen va a tomar la configuracion del appsettings.json del servicio.
+```bash
+docker build -t procesamientodepagos .  
+```
+## Ejecutar el contenedor
 
-6- El servicio queda iniciado.
+Para ejecutar el contenedor, utiliza el siguiente comando:
+
+```bash
+docker run -d --name nombre-contenedor procesamientodepagos
+```
+
+## Verificacion de Instalacion
+
+Para verficar que el servicio quedo funcionando, se puede visualizar el container el en apartado de Containers y verficiar que no haya errores en el Log.
 
 
  
