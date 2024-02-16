@@ -31,7 +31,7 @@ namespace WorkerProcesamientoDePagos
                     //Verifica Aprobacion por decimal
                     if(solicitud.Monto % 1 == 0)
                     {
-                        //Publica en cola de gestion de aprobacion
+                        //Publica en cola de gestion de autorizacion
                         _logger.LogInformation("Inicio publicar solicitud: {IdSolicitud}", solicitud.IdSolicitud);
                         _messageService.SendMessage(solicitud);
                         _logger.LogInformation("Fin publicar solicitud: {IdSolicitud}", solicitud.IdSolicitud);
@@ -40,7 +40,7 @@ namespace WorkerProcesamientoDePagos
                     {
                         //inserta solicitud rechazado
                         _logger.LogInformation("Inicio insertar solicitud: {IdSolicitud}", solicitud.IdSolicitud);
-                        solicitud.Estado = "Rechazada";
+                        solicitud.Estado = "Denegada";
                         solicitud.Fecha = DateTime.Now;
                         solicitud.Observacion = "El valor del monto es decimal";
                         _contextMgmt.InsertSolicitud(solicitud);

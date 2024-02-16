@@ -1,6 +1,7 @@
 ﻿using Application.Interfaces;
 using Domain.Entities;
 using InfraEstructure.Persistence;
+using Microsoft.EntityFrameworkCore;
 
 namespace InfraEstructure.Services
 {
@@ -18,5 +19,6 @@ namespace InfraEstructure.Services
             _dbContext.Add(solicitud);
             _dbContext.SaveChanges();
         }
+
     }
 }
