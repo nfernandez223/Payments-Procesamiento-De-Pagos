@@ -6,9 +6,9 @@ Servicio utilizado para el procesamiento de pagos.
 
 ## Requisitos Previos
 
-Docker instalado en tu máquina.
-RabbitMQ instalado dentro de Docker.
-Sql Server instalado dentro de Docker.
+Docker instalado en tu máquina.<br>
+RabbitMQ instalado dentro de Docker.<br>
+Sql Server instalado dentro de Docker.<br>
 Verficar la existencia del archivo Dockerfile dentro del repositorio y su configuracion, siempre debe estar en la raiz del directorio.
 
 ## Crear la imagen
